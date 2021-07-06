@@ -1,13 +1,19 @@
 version: 0.2
-phases: null
-install: null
-runtime-versions: null
-java: corretto11
-commands:
-- echo Build completed successfully
-build: null
-post_build: null
-artifacts: null
-files:
-- target/medical-representative-schedule-service-0.0.1-SNAPSHOT.jar
-discard-paths: true
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
+      - echo install
+  build:
+    commands:
+      - echo Entered the build phase...
+      - mvn clean package -Dmaven.test.skip=true
+  post_build:
+    commands:
+      - echo Build completed successfully
+artifacts:
+  files:
+    - target/medical-representative-schedule-service-0.0.1-SNAPSHOT.jar 
+  discard-paths: yes
